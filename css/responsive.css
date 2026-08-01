@@ -1,0 +1,38 @@
+/* Responsive Media Queries */
+
+@media (max-width: 992px) {
+  .hero h1 { font-size: 2.5rem; }
+  .section-container { padding: 3rem 5%; }
+  .hero-search { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .navbar { padding: 1rem 5%; }
+  
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--bg-card);
+    flex-direction: column;
+    justify-content: center;
+    transition: var(--transition);
+  }
+  
+  .nav-links.active { right: 0; }
+  
+  .menu-toggle { display: block !important; }
+  
+  .hero-search { grid-template-columns: 1fr; }
+  
+  .admin-table { display: block; overflow-x: auto; }
+}
+
+/* Mobile Toggle Display Utility */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
