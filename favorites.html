@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Favorite Properties | LUXE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo"><i class="fa-solid fa-building-user"></i> LUXE<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="favorites.html" class="active">Favorites <span class="fav-badge">0</span></a></li>
+    </ul>
+  </nav>
+
+  <section class="section-container" style="margin-top: 80px;">
+    <h2>Saved Residences</h2>
+    <div class="property-grid" id="favs-grid" style="margin-top:2rem;"></div>
+  </section>
+
+  <script type="module">
+    import { getProperties } from './js/properties.js';
+    import { getFavorites, toggleFavorite } from './js/favorites.js';
+    import { initTheme } from './js/theme.js';
+
+    initTheme();
+
+    const renderFavs = () => {
+      const grid = document.getElementById('favs-grid');
+      const favIds = getFavorites();
+      const all = getProperties();
+      const favProperties = all.filter(p => favIds.includes(p.id));
+
+      if (favProperties.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 4rem;">
+          <i class="fa-regular fa-heart" style="font-size:3rem; color:var(--text-muted);"></i>
+          <h3 style="margin-top:1rem;">No saved properties yet.</h3>
+        </div>`;
+        return;
+      }
+
+      grid.innerHTML = favProperties.map(p => `
+        <div class="card">
+          <img src="${p.image}" style="height:200px; object-fit:cover;">
+          <div class="card-content">
+            <h3>${p.title}</h3>
+            <p style="color:var(--accent); font-weight:bold;">$${p.price.toLocaleString()}</p>
+            <button class="btn-primary" style="margin-top:1rem;" onclick="removeFav('${p.id}')">Remove</button>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    window.removeFav = (id) => {
+      toggleFavorite(id);
+      renderFavs();
+    };
+
+    renderFavs();
+  </script>
+</body>
+</html>

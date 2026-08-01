@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | LUXE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo"><i class="fa-solid fa-building-user"></i> LUXE<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Exit Admin</a></li>
+    </ul>
+  </nav>
+
+  <section class="section-container" style="margin-top: 80px;">
+    <h2>Admin Management Dashboard</h2>
+    
+    <div style="display:flex; gap:2rem; margin:2rem 0;">
+      <div class="glass-panel" style="padding:1.5rem; flex:1;">
+        <h3>Total Listings</h3>
+        <p id="stat-total" style="font-size:2rem; font-weight:800; color:var(--accent);">0</p>
+      </div>
+      <div class="glass-panel" style="padding:1.5rem; flex:1;">
+        <h3>Active Properties</h3>
+        <p id="stat-active" style="font-size:2rem; font-weight:800; color:#10B981;">0</p>
+      </div>
+    </div>
+
+    <table class="admin-table glass-panel">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="admin-table-body"></tbody>
+    </table>
+  </section>
+
+  <script type="module">
+    import { renderAdminTable } from './js/admin.js';
+    import { initTheme } from './js/theme.js';
+    initTheme();
+    renderAdminTable();
+  </script>
+</body>
+</html>

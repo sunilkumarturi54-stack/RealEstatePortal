@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUXE | Premium Real Estate Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo"><i class="fa-solid fa-building-user"></i> LUXE<span>.</span></a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#properties">Properties</a></li>
+      <li><a href="favorites.html">Favorites <span class="fav-badge">0</span></a></li>
+      <li><a href="admin.html">Admin Portal</a></li>
+    </ul>
+    <div style="display:flex; gap:1rem; align-items:center;">
+      <button id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+      <div class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('active')">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1 class="animate-fade-in">Find Your Dream Estate Today</h1>
+    <p class="animate-fade-in">Discover curated luxury properties tailored perfectly to your lifestyle.</p>
+    
+    <div class="hero-search glass-panel animate-zoom-in">
+      <div class="input-group">
+        <label>Location</label>
+        <select id="filter-location">
+          <option value="">All Locations</option>
+          <option value="Los Angeles, CA">Los Angeles, CA</option>
+          <option value="New York, NY">New York, NY</option>
+          <option value="Miami, FL">Miami, FL</option>
+          <option value="Aspen, CO">Aspen, CO</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Property Type</label>
+        <select id="filter-type">
+          <option value="">All Types</option>
+          <option value="Villa">Villa</option>
+          <option value="Penthouse">Penthouse</option>
+          <option value="Apartment">Apartment</option>
+          <option value="House">House</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Bedrooms</label>
+        <select id="filter-beds">
+          <option value="">Any Beds</option>
+          <option value="2">2+ Beds</option>
+          <option value="3">3+ Beds</option>
+          <option value="4">4+ Beds</option>
+        </select>
+      </div>
+      <button class="btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+    </div>
+  </header>
+
+  <!-- Main Properties Display -->
+  <section class="section-container" id="properties">
+    <div class="section-header">
+      <div>
+        <h2>Featured Listings</h2>
+        <p style="color:var(--text-muted)">Handpicked premium residences available right now.</p>
+      </div>
+      <div style="display:flex; gap:1rem;">
+        <select id="filter-sort" style="padding:0.5rem; border-radius:var(--radius-sm);">
+          <option value="newest">Sort: Newest</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="property-grid" id="property-grid">
+      <!-- Injected dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- Details Modal -->
+  <div class="modal-overlay" id="details-modal">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('details-modal')"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modal-details-content"></div>
+    </div>
+  </div>
+
+  <button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo" style="color:#FFF;">LUXE<span>.</span></a>
+        <p style="margin-top:1rem; color:var(--text-muted);">The leader in global luxury architectural living spaces.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="index.html">Properties</a></p>
+        <p><a href="favorites.html">Saved Homes</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LUXE Real Estate. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
